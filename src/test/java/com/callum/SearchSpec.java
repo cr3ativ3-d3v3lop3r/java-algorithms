@@ -13,9 +13,9 @@ interface Construct {
 
 public class SearchSpec {
 
-    private Construct constructList = size -> {
-        List<Integer> list = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
 
+    private Construct constructList = size -> {
         for(int i = 1; i < size + 1; i++) {
             list.add(i);
         }
