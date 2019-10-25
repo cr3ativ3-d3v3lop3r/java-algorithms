@@ -18,7 +18,7 @@ public class SortSpec {
         Random random = new Random();
 
         for (int i  = 0; i < size; i++) {
-            list.add(random.nextInt((1000 - 0) + 1) + 0);
+            list.add(random.nextInt(1001));
         }
 
         return list;
@@ -27,7 +27,7 @@ public class SortSpec {
     @Test
     @DisplayName("A bubble sort method should compare adjacent elements and sort in ascending order")
     public void bubbleSortSpec1() {
-        List<Integer> input = constructList(25);
+        List<Integer> input = constructList(10);
         List<Integer> output = input.stream().sorted().collect(Collectors.toList());
 
         assertThat(new Sort().bubbleSort(input), is(output));
@@ -36,7 +36,7 @@ public class SortSpec {
     @Test
     @DisplayName("A quick sort method should compare adjacent partitions based upon a pivot point and sort recursively")
     public void quickSortSpec1() {
-        List<Integer> input = constructList(5);
+        List<Integer> input = constructList(1000000);
         List<Integer> output = input.stream().sorted().collect(Collectors.toList());
 
         assertThat(new Sort().quickSort(input), is(output));
