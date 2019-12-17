@@ -1,5 +1,6 @@
 package com.callum;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Search {
@@ -41,5 +42,39 @@ public class Search {
             System.out.println("The list is empty, target is not found.");
             return false;
         } else return loop.apply(xs.get(0), xs.get(xs.size() - 1));
+    }
+
+    // Worst time O(log n) where n is the number of elements in the
+    // collection.
+
+    // Constant space O(1) meaning that the space taken is the same
+    // for any number of elements in the collection.
+    public static int binarySearch2(List<Integer> xs, Integer target) {
+        int left = 0;
+        int right = xs.size() - 1;
+
+        System.out.println("xs.size = " + xs.size());
+        System.out.println("left " + left);
+        System.out.println("right " + right);
+
+        while(left <= right) {
+            int middle = left + (right - 1) / 2;
+
+            if (xs.get(middle).equals(target))
+                return middle;
+
+            if (xs.get(middle) < target)
+                left = middle + 1;
+            else
+                right = middle - 1;
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> xs = Arrays.asList(1, 2, 4, 5, 6, 9, 10, 12);
+
+        System.out.println(binarySearch2(xs, 4));
     }
 }
